@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+  proxy:
+    image: envoyproxy/envoy-alpine:v1.16.0
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
+    networks:
+      - envoy-redis
+    ports:
+      - "9125:9125"
+      - "9901:9901"
+      - "6379:6379"
+  redis_1:
+    container_name: redis_1
+    image: redis:alpine
+    networks: 
+      - envoy-redis
+  redis_2:
+    container_name: redis_2
+    image: redis:alpine
+    networks: 
+      - envoy-redis
+networks:
+  envoy-redis:
