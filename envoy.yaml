@@ -45,7 +45,7 @@ static_resources:
         - endpoint:
             address:
               socket_address:
-                address: redis_2
+                address: redis_3
                 port_value: 6379
     health_checks:
       custom_health_check:
